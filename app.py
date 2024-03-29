@@ -10,7 +10,14 @@ def hello_world():  # put application's code here
     return Response('Hello World!')
 
 
-
+@sock.route('/getNews')
+def getNews(ws):
+    while True:
+        data = ws.receive(30)
+        if data:
+            ws.send(data)
+        else:
+            break
 
 
 if __name__ == '__main__':
